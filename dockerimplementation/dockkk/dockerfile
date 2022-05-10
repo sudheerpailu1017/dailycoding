@@ -1,0 +1,5 @@
+FROM openjdk:8
+COPY . /home/Documents
+WORKDIR /home/Documents
+RUN ["javac","javaexample.java"]
+ENTRYPOINT ["java","javaexample"]
