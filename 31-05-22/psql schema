@@ -1,0 +1,21 @@
+Steps to create database, schema, table:
+
+
+CREATE DATABASE testdb;
+CREATE SCHEMA testdbb;
+CREATE TABLE testdbb.empdata(employeeid int,employee_name varchar(255),employee_pswd varchar(255));
+SELECT * from testdbb.empdata;
+insert into testdbb.empdata(employeeid, employee_name, employee_pswd) values('150','sudheer','password');
+insert into testdbb.empdata(employeeid, employee_name, employee_pswd) values('151','rohit','password1');
+insert into testdbb.empdata(employeeid, employee_name, employee_pswd) values('152','pavan','password2');
+
+
+Steps to create a guest-user and grant only readonly acccess to database,schema,table:
+
+
+CREATE USER guest WITH PASSWORD 'your_password';
+GRANT CONNECT ON DATABASE testdb TO guest;
+GRANT USAGE ON SCHEMA testdbb TO guest;
+GRANT SELECT ON ALL TABLES IN SCHEMA testdbb TO guest;
+ALTER DEFAULT PRIVILEGES IN SCHEMA testdbb
+GRANT SELECT ON TABLES TO guest;
