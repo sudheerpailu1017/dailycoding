@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob-text
+spec:
+  schedule: "*/5 * * * *" #every 5 min
+  jobTemplate:
+   spec:
+    template:
+      spec:
+        containers:
+        - name: simplejob-container
+          image: simplejob
+          imagePullPolicy: IfNotPresent
+      
+        restartPolicy: OnFailure
